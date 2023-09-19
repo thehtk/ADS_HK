@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "911355235337",
+    "project_id": "app-hk-69dae",
+    "storage_bucket": "app-hk-69dae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911355235337:android:040b7b3760ce35e99c3cd8",
+        "android_client_info": {
+          "package_name": "com.example.app_hk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtwHaoBxEx79isPvvrowpYmsQ5_CF_Zqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
