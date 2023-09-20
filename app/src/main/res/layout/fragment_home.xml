@@ -1,53 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lavender"
-    tools:context=".home1">
-
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="24sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"/>
+    tools:context=".HomeFragment">
 
     <TextView
         android:id="@+id/rewardTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reward: 0"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="150dp"/>
+        android:textSize="24sp"
+        android:layout_centerInParent="true"/>
 
     <Button
         android:id="@+id/increaseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Increase Reward"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="210dp"/>
-
-    <TextView
-        android:id="@+id/ctruser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reward: 0"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="280dp"/>
+        android:layout_below="@+id/rewardTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/logoutbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="300dp"/>
+        android:layout_below="@+id/increaseButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
 
-</FrameLayout>
+</RelativeLayout>

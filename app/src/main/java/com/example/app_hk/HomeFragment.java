@@ -9,13 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.app_hk.R;
+import com.example.app_hk.signin;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
 
@@ -25,6 +31,7 @@ public class HomeFragment extends Fragment {
     Button logoutbtn;
     TextView ctruser;
     FirebaseUser user;
+    DatabaseReference databaseReference;
 
     @Nullable
     @Override
@@ -35,6 +42,7 @@ public class HomeFragment extends Fragment {
         logoutbtn = view.findViewById(R.id.logoutbtn);
         ctruser = view.findViewById(R.id.ctruser);
         user = auth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(user.getEmail().replace(".", "_"));
 
         if (user == null) {
             Intent intent = new Intent(requireContext(), signin.class);
@@ -49,12 +57,31 @@ public class HomeFragment extends Fragment {
             reward = sharedPreferences.getInt("reward", 0);
             rewardTextView.setText("Reward: " + reward);
 
+            // Fetch the score from Firebase Realtime Database and update the TextView
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        int score = dataSnapshot.child("score").getValue(Integer.class);
+                        rewardTextView.setText("Reward: " + score);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle any errors here
+                }
+            });
+
             increaseButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Increase the reward and update the TextView
+                    // Increment the score in Firebase Realtime Database and update the TextView
                     reward++;
                     rewardTextView.setText("Reward: " + reward);
+
+                    // Save the updated score to Firebase Realtime Database
+                    databaseReference.child("score").setValue(reward);
 
                     // Save the reward to SharedPreferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();

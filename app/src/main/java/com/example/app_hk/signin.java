@@ -85,7 +85,7 @@ public class signin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Define an Intent to navigate to the signup page
-                Intent intent = new Intent(signin.this, signup.class);
+                Intent intent = new Intent(signin.this, signupdemo.class);
                 // Start the signup page activity
                 startActivity(intent);
             }
