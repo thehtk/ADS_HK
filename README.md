@@ -27,7 +27,7 @@ Follow these steps to get ADS_HK up and running on your local development enviro
 **Clone the Repository:** Begin by cloning this repository to your local machine using the following command:
 
    ```bash
-   git clone https://github.com/thehtk/ADS_HK.git
+   git clone https://github.com/thehtk/ADS_HK.git```
 
 ## Contact
 
